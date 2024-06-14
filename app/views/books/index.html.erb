@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="homes.scss" />
+    <title>Books</title>
+  </head>
+
+  <body>
+
+<!-- form_with部分 -->
+<%= form_with model: @book do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿' %>
+<% end %>
+
+  </body>
+</html>
