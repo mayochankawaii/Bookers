@@ -7,8 +7,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
   if @book.save
+    flash[:notice] = "Book was successfully created."
     redirect_to book_path(@book.id)
   else
+    flash.now[:alert] = "errors prohibited this book from being saved"
     render :new
   end
 end
@@ -27,6 +29,7 @@ end
   end
   
   def update
+    flash[:notice] = "Book was successfully updated."
     book = Book.find(params[:id])
     book.update(book_params)
     redirect_to book_path(book.id)  
@@ -35,6 +38,7 @@ end
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "Book was successfully destroyed."
     redirect_to '/books'
   end
   
